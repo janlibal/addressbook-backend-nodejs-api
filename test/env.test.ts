@@ -6,4 +6,5 @@ test('.env | App Definition', async () => {
     expect(!!config.pinoEnabled).toBeTruthy()
     expect(!!config.pinoMinLevel).toBeDefined()
     expect(!!config.logPath).toBeDefined()
+    expect(!!config.environment).toBeDefined()
 })
