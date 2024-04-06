@@ -1,4 +1,6 @@
 export interface IConfig {
     appName: string
     nodeVer: string
+    pinoMinLevel: string
+    pinoEnabled: boolean
 }
