@@ -5,4 +5,5 @@ export interface IConfig {
     pinoEnabled: boolean
     logPath: string
     environment: string
+    port: string
 }
