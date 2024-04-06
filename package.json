@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint:check": "eslint --ext ts --report-unused-disable-directives .",
-    "test": "jest"
+    "test": "cross-env ENV_FILE=./src/config/env/.env.test jest --detectOpenHandles"
   },
   "homepage": "https://github.com/janlibal/addressbook-backend-nodejs-api",
   "author": {
