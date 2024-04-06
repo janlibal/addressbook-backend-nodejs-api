@@ -56,7 +56,8 @@
     "cross-env": "^7.0.3",
     "dotenv-extended": "^2.9.0",
     "dotenv-parse-variables": "^2.0.0",
-    "pino": "^8.19.0"
+    "pino": "^8.19.0",
+    "pino-pretty": "^11.0.0"
   },
   "eslintConfig": {
     "extends": [
