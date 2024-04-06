@@ -21,6 +21,7 @@ const config: IConfig = {
     pinoMinLevel: parsedEnv.PINO_MIN_LEVEL as string,
     pinoEnabled: parsedEnv.PINO_ENABLED as boolean,
     logPath: parsedEnv.LOGS as string,
+    environment: parsedEnv.ENVIRONMENT as string
 }
 
 export default config
