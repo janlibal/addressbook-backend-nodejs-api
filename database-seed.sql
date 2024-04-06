@@ -1,0 +1,8 @@
+CREATE TABLE users
+(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email CHARACTER VARYING(255),
+    name CHARACTER VARYING(255),
+    password CHARACTER VARYING(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
