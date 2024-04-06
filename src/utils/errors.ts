@@ -35,3 +35,10 @@ export class RequestValidationErrors extends Forbidden {
   status = 400
   expose = false
 }
+
+export class ResourceAlreadyExists extends Forbidden {
+  name = 'ResourceAlreadyExists'
+  type = 'RESOURCE_ALREADY_EXISTS'
+  status = 409
+  expose = false
+}
