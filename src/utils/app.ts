@@ -9,6 +9,7 @@ import cors from '@koa/cors'
 import koaLogger from 'koa-logger'
 import errorHandler from '../middleware/errorHandler'
 import config from '../config'
+import router from '../routes'
 import shutdown from '../middleware/shutdown'
 import pino from 'pino'
 
@@ -35,5 +36,7 @@ app.use(
   }),
 )
 app.use(koaHelmet())
+app.use(router.routes())
+app.use(router.allowedMethods())
 
 export { app, server }

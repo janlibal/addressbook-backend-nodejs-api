@@ -39,16 +39,17 @@
     "api"
   ],
   "devDependencies": {
-    "@types/koa__cors": "^5.0.0",
-    "@types/koa-bodyparser": "^4.3.12",
-    "@types/koa-compress": "^4.0.6",
-    "@types/koa-logger": "^3.1.5",
     "@strv/eslint-config-base": "^3.5.0",
     "@strv/eslint-config-node": "^3.3.2",
     "@strv/eslint-config-typescript": "^4.1.2",
     "@types/dotenv-parse-variables": "^2.0.3",
     "@types/jest": "^29.5.12",
     "@types/koa": "^2.15.0",
+    "@types/koa__cors": "^5.0.0",
+    "@types/koa-bodyparser": "^4.3.12",
+    "@types/koa-compress": "^4.0.6",
+    "@types/koa-logger": "^3.1.5",
+    "@types/koa-router": "^7.4.8",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -64,14 +65,15 @@
     "dotenv-extended": "^2.9.0",
     "dotenv-parse-variables": "^2.0.0",
     "koa": "^2.15.2",
-    "pino": "^8.19.0",
-    "pino-pretty": "^11.0.0",
     "koa-body": "^6.0.1",
     "koa-bodyparser": "^4.4.1",
     "koa-compress": "^5.1.1",
     "koa-helmet": "^7.0.2",
     "koa-logger": "^3.2.1",
-    "koa-requestid": "^2.2.1"
+    "koa-requestid": "^2.2.1",
+    "koa-router": "^12.0.1",
+    "pino": "^8.19.0",
+    "pino-pretty": "^11.0.0"
   },
   "eslintConfig": {
     "extends": [
