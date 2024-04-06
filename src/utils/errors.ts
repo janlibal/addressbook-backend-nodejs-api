@@ -22,3 +22,16 @@ export class AppError extends Error {
     })
   }
 }
+
+export class Forbidden extends Error {
+  status = 403
+  name = 'Forbidden'
+  expose = false
+}
+
+export class RequestValidationErrors extends Forbidden {
+  name = 'InvalidRequestBodyFormat'
+  type = 'INVALID_BODY_FORMAT'
+  status = 400
+  expose = false
+}
