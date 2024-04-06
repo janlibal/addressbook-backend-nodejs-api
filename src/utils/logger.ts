@@ -1,6 +1,21 @@
 import pino from "pino"
 import config from "../config"
 
+const transport = pino.transport({
+  targets: [
+    {
+      target: 'pino/file',
+      options: { destination: config.logPath },
+    },
+    {
+      target: 'pino-pretty',
+        options: {
+            colorize: true
+        }
+    },
+  ],
+})
+
 export default pino({
     formatters: {
       bindings: (bindings) => {
@@ -24,4 +39,4 @@ export default pino({
       ],
       remove: true,
     },
-})
+}, transport)
