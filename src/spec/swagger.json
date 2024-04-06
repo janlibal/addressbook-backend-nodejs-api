@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Addressbook is a simple RESTful API project built using Node.Js, Koa, Swagger, TypeScript and Objection as ORM for a Postres database.",
+        "version": "6.0.0",
+        "title": "Addressbook",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "jan.libal@yahoo.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1"
+}

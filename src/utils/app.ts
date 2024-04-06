@@ -8,6 +8,7 @@ import koaHelmet  from 'koa-helmet'
 import cors from '@koa/cors'
 import koaLogger from 'koa-logger'
 import { koaSwagger } from 'koa2-swagger-ui'
+import fs from 'fs'
 import errorHandler from '../middleware/errorHandler'
 import config from '../config'
 import router from '../routes'
@@ -33,6 +34,9 @@ app.use(cors({
 app.use(
   koaSwagger({
     routePrefix: '/swagger',
+    swaggerOptions: {
+      spec: JSON.parse(fs.readFileSync('./src/spec/swagger.json', 'utf8')),
+    }
   }),
 )
 app.use(
