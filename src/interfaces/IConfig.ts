@@ -3,4 +3,5 @@ export interface IConfig {
     nodeVer: string
     pinoMinLevel: string
     pinoEnabled: boolean
+    logPath: string
 }

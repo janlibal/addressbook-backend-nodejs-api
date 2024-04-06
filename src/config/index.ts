@@ -20,6 +20,7 @@ const config: IConfig = {
     nodeVer: pack.engines.node as string,
     pinoMinLevel: parsedEnv.PINO_MIN_LEVEL as string,
     pinoEnabled: parsedEnv.PINO_ENABLED as boolean,
+    logPath: parsedEnv.LOGS as string,
 }
 
 export default config
