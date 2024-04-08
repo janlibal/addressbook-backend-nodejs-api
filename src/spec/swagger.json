@@ -37,10 +37,126 @@
                     }
                 }
             }
+        },
+        "/api/v1/login": {
+            "post": {
+                "description": "Logs in a registered user",
+                "summary": "Logs user into the app",
+                "operationId": "loginUser",
+                "tags": [
+                    "login"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Login",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "headers": {
+                            "X-Expires-After": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "date in UTC when token expires"
+                            },
+                            "X-Rate-Limit": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "calls per hour allowed by the user"
+                            }
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "401":{
+                        "description": "Invalid email or password",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                          }
+                    },
+                    "400": {
+                        "description": "Invalid body format",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                          }
+                    }
+                }
+                
+            }
         }
-
     },
     "definitions": {
+        "Login": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Login"
+            }
+        },
+        "Error": {
+            "type": "object",
+            "required": [
+                "requestId",
+                "status",
+                "type",
+                "message",
+                "stack"
+              ],
+            "properties": {
+                "requestId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "stack": {
+                    "type": "string"
+                }
+            }
+        },
+        "Success": {
+            "type": "object",
+            "required": [
+                "email",
+                "token"
+              ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
         "ApiResponse": {
             "type": "object",
             "properties": {
