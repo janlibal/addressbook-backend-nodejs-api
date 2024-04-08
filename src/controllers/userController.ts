@@ -20,3 +20,9 @@ export async function signUp(ctx:IContext){
     ctx.body = user
     
 }
+
+export async function signIn(ctx:IContext){
+
+    ctx.status = 200
+
+}
