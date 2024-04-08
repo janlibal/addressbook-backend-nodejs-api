@@ -20,10 +20,16 @@ async function parseHeader(hdrValue:string) {
   }
 
 
-async function getAuthPayload(token:string) {
+async function getAuthPayload(authorization:string) {
+
+    const parsedHeader = await parseHeader(authorization)
   
-    if (!token) {
-      return null
+    if (!parsedHeader
+        || !parsedHeader.value
+        || !parsedHeader.scheme
+        || parsedHeader.value.toLowerCase() !== 'jwt' 
+    ) {
+        return null
     }
         
     return true
