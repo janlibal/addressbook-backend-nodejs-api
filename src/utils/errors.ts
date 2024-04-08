@@ -48,3 +48,10 @@ export class ResourceAlreadyExists extends Forbidden {
   status = 409
   expose = false
 }
+
+export class InvalidToken extends Forbidden {
+  name = 'InvalidToken'
+  type = 'INVALID_TOKEN'
+  status = 403
+  expose = false
+}
