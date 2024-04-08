@@ -4,6 +4,7 @@ import logger from "../utils/logger"
 import * as errors from '../utils/errors'
 import validate from "../validations"
 import schema from '../validations/schemas/userSchema'
+import userOperations from "../operations/userOperations"
 
 async function parseHeader(hdrValue:string) {
 
@@ -38,7 +39,9 @@ async function getAuthPayload(authorization:string) {
 
     validate(schema.jwtToken, token)
 
-    return true
+    const data = await userOperations.verifyTokenPayload(token)
+
+    return data
      
    }
 
@@ -55,6 +58,13 @@ export async function authenticate(ctx:IContext, next:Next) {
     if (!data) {
         throw new errors.InvalidToken()
     }
+
+    if (ctx.response && data.loginTimeout) {
+        ctx.set('Login-timeout', data.loginTimeout.toString())
+    }
+    
+    ctx.state.user = data
+    ctx.state.userId = data.user.id
 
     return next()
 
