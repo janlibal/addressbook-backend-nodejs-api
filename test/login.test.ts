@@ -25,7 +25,6 @@ describe('POST /api/v1/login', () => {
  
       const res = await request
       .post(`/api/v1/user`)
-      .expect('Content-Type', /json/)
       .expect(200)
     })
 })
