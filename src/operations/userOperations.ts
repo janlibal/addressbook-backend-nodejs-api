@@ -40,37 +40,33 @@ async function login(input: IUser) {
 
 async function create(input: IUser) {
     
-    logger.info('create user started')
+  logger.info('create user started')
 
-    const data = {
-      email: input.email,
-      name: input.name,
-      password: await crypto.hashPassword(input.password),
-    }
+  const data = {
+    email: input.email,
+    name: input.name,
+    password: await crypto.hashPassword(input.password),
+  }
 
-    const user = await userRepository.findByEmail(data.email)
-        
-    if (user) {
-      logger.info('Resource already exists')
-      throw new errors.ResourceAlreadyExists('User already registered')
-    }
+  const user = await userRepository.findByEmail(data.email)
+      
+  if (user) {
+    logger.info('Resource already exists')
+    throw new errors.ResourceAlreadyExists('User already registered')
+  }
 
-    let createdUser: any
-    createdUser = await userRepository.saveUser(data)
+  let createdUser: any
+  createdUser = await userRepository.saveUser(data)
 
-    const token = await crypto.generateAccessToken(createdUser.id)
-    
-    const fakeUser = {
-        email: 'joe.doe@joedoe.com',
-        token
-    }
-       
-    logger.info({email: fakeUser.email, token: token}, 'create user finished')
+  const token = await crypto.generateAccessToken(createdUser.id)
+     
+  logger.info({email: createdUser.email, token: token}, 'create user finished')
 
-    return {
-        email: fakeUser.email,
-        token
-    }
+  return {
+      email: createdUser.email,
+      token
+  }
+  
 }
 
 export default { 
