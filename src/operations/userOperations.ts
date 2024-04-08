@@ -29,16 +29,11 @@ async function login(input: IUser) {
   }
 
   const token = await crypto.generateAccessToken(user.id)
-
-  const fakeUser = {
-      email: 'joe.doe@joedoe.com',
-      token
-  }
   
-  logger.info({email: fakeUser.email, token: token}, 'login finished')
+  logger.info({email: user.email, token: token}, 'login finished')
 
   return {
-      email: fakeUser.email,
+      email: user.email,
       token
   }
 }
