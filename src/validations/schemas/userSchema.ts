@@ -1,3 +1,11 @@
+const jwtToken = {
+  type: 'Object',
+  required: true,
+  properties: {
+    jwtToken: { type: 'string', required: true },
+  },
+}
+
 const signIn = {
   type: 'Object',
   required: true,
@@ -17,4 +25,4 @@ const signUp = {
   },
 }
   
-export default { signUp, signIn }
+export default { signUp, signIn, jwtToken }
