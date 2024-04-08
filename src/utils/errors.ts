@@ -23,6 +23,12 @@ export class AppError extends Error {
   }
 }
 
+export class UnauthorizedError extends AppError {
+  constructor(message:string) {
+    super(message || 'Site access denied.', 'UNAUTHORIZED', 401)
+  }
+}
+
 export class Forbidden extends Error {
   status = 403
   name = 'Forbidden'
