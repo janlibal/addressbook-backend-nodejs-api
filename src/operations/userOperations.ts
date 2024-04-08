@@ -74,6 +74,14 @@ async function verifyTokenPayload(token:string) {
 
   let jwtPayload:any
   jwtPayload = await crypto.verifyToken(token)
+
+  const now = Date.now()
+  if (!jwtPayload || !jwtPayload.exp || now >= jwtPayload.exp * 1000) {
+    throw new errors.Unauthorized('Invalid token')
+  }
+
+  logger.info('verifyTokenPayload finished')
+
   
   logger.info('verifyTokenPayload finished')
 

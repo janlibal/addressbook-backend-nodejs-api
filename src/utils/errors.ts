@@ -55,3 +55,10 @@ export class InvalidToken extends Forbidden {
   status = 403
   expose = false
 }
+
+export class Unauthorized extends Error {
+  name = 'Unauthorized'
+  type = 'UNAUTHORIZED'
+  status = 401
+  expose = false
+}
