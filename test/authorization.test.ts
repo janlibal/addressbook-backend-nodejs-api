@@ -15,7 +15,7 @@ describe('Headers tests', () => {
       const request = supertest(server)
       const res = await request
       .post(`/api/v1/address`)
-      .expect(500)
+      .expect(401)
 
       const info = res.body
       const status = res.status
