@@ -69,3 +69,10 @@ export class BadHeader extends Error {
   status = 401
   expose = false
 }
+
+export class NotFound extends Error {
+  status = 404
+  type = 'NOT_FOUND'
+  name = 'NotFound'
+  expose = false
+}

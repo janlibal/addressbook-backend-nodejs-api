@@ -1,11 +1,16 @@
 import { IContext } from "../interfaces/IContext"
 import config from "../config"
-
+import { handleNotFound } from "./routeNotFound"
 
 async function errorHandler(ctx: IContext, next: () => Promise<any>) {
     try {
 
         await next()
+
+        const status = ctx.status || 404
+        if (status === 404) {
+        handleNotFound()
+        }
 
       } catch (error: any) {
 
