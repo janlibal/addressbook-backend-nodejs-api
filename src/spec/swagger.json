@@ -153,9 +153,105 @@
                 }
                 
             }
+        },
+        "/api/v1/address": {
+            "post": {
+                "tags": [
+                    "address"
+                ],
+                "summary": "Add a new contact into the addressbook",
+                "description": "",
+                "operationId": "addContact",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Address object that needs to be added to Firestore",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Address"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid body format",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                          }
+                    },
+                    "401": {
+                        "description": "No authorization defined",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                          }
+                    }
+                },
+                "security": [{ "Bearer": [] }]
+            }
         }
     },
+    "securityDefinitions": {
+        "Bearer": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header",
+          "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+        }
+      }, 
     "definitions": {
+        "Contact": {
+            "type": "object",
+            "required": [
+                "_seconds",
+                "_nanoseconds"
+              ],
+            "properties": {
+                "_writeTime": {
+                    "type": "object",
+                    "properties": {
+                        "_seconds": {
+                            "type": "integer",
+                            "format": "int32"
+                            },
+                        "_nanoseconds": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                }
+            }
+        },
+        "Success": {
+            "type": "object",
+            "required": [
+                "email",
+                "token"
+              ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
         "Login": {
             "type": "object",
             "properties": {
@@ -187,6 +283,32 @@
                 "name": "Login"
             }
         },
+        "Address": {
+            "type": "object",
+            "required": [
+                "firstName",
+                "lastName",
+                "phoneNo",
+                "address"
+            ],
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "phoneNo": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "Address"
+            }
+        },
         "Error": {
             "type": "object",
             "required": [
@@ -213,22 +335,6 @@
                 },
                 "stack": {
                     "type": "string"
-                }
-            }
-        },
-        "Success": {
-            "type": "object",
-            "required": [
-                "email",
-                "token"
-              ],
-            "properties": {
-                "email": {
-                    "type": "string"
-                },
-                "token": {
-                    "type": "string",
-                    "format": "uuid"
                 }
             }
         }
