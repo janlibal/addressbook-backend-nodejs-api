@@ -31,4 +31,22 @@ describe('GET /', () => {
         expect(environments.nodeVersion).toBe(process.versions['node'])
         expect(environments.platform).toBe(`${process.platform}/${process.arch}`)
       })
+
+      it('<404> should return 404 with an unknown endpoint', async () => {
+        const request = supertest(server)
+        const res = await request
+          .get('/unknown')
+          .expect('Content-Type', /json/)
+          .expect(404)
+        const info = res.body
+        const status = res.status
+
+        expect(status).toBe(404)
+        expect(info.status).toBe(404)
+        expect(info.requestId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+        expect(info.type).toMatch('NOT_FOUND')
+        expect(info.message).toMatch('Route not found!')
+        expect(info.stack).toMatch(/NotFound: Route not found!/i)
+        
+      })
 })
