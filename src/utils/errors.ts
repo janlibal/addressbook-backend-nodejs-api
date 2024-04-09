@@ -62,3 +62,10 @@ export class Unauthorized extends Error {
   status = 401
   expose = false
 }
+
+export class BadHeader extends Error {
+  name = 'BadHeader'
+  type = 'BAD_HEADER'
+  status = 401
+  expose = false
+}

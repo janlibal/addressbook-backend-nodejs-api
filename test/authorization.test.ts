@@ -11,7 +11,7 @@ afterAll(async () => {
 
 describe('Headers tests', () => {
 
-    it('1. AUTHORIZATION: Should return 500 for missing token', async () => {
+    it('1. AUTHORIZATION: Should return 401 for missing token', async () => {
       const request = supertest(server)
       const res = await request
       .post(`/api/v1/address`)
@@ -19,10 +19,12 @@ describe('Headers tests', () => {
 
       const info = res.body
       const status = res.status
-      expect(status).toBe(500)
+      expect(status).toBe(401)
+      expect(info.status).toBe(401)
       expect(info.requestId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+      expect(info.type).toMatch('BAD_HEADER')
       expect(info.message).toMatch('No authorization defined')
-      expect(info.stack).toMatch(/Error: No authorization defined/i)
+      expect(info.stack).toMatch(/BadHeader: No authorization defined/i)
     })
 
     it('2. AUTHORIZATION: Should return 403 for invalid token', async () => {
