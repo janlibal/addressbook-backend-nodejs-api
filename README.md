@@ -43,8 +43,18 @@ Addressbok API is a simple RESTful API project built using Node.Js, Koa, Swagger
 ### Migrations
 
 * create a new migration: npm run migration:make
-* apply migration into DB in dev environment: npm run db-dev:migrate
-* apply migration into DB in test environment: npm run db-test:migrate
+* apply migration into DB in dev environment: npm run migrate:db-dev
+* apply migration into DB in test environment: npm run migrate:db-test
+
+### Seeding
+
+* create a new seed: npm run seed:make
+* dump tables in dev environment: npm run seed:db-dev
+
+### Rollbacks
+
+* rollback DB in development environment: npm run rollback:db-dev
+* rollback DB in test environment: npm run rollback:db-test
 
 ## Design
 
