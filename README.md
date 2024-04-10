@@ -30,6 +30,11 @@ Addressbok API is a simple RESTful API project built using Node.Js, Koa, Swagger
 * Npm – 8 and higher
 * Docker and docker-compose in order to launch Postgres and App 
 
+### Docker Controls
+
+* create and start docker containers: npm run infra
+* stop docker containers: npm run infra:stop
+
 ### Setup And Start
 
 * install dependencies: npm install
