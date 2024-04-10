@@ -40,6 +40,10 @@ Addressbok API is a simple RESTful API project built using Node.Js, Koa, Swagger
 
 * npm run test
 
+### Build
+
+* build into /dist: npm run build
+
 ### Migrations
 
 * create a new migration: npm run migration:make
