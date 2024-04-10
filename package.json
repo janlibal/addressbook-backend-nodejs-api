@@ -22,7 +22,9 @@
     "rollback:db-dev": "knex migrate:rollback --env development --knexfile ./src/database/knexfile.ts",
     "rollback:db-test": "knex migrate:rollback --env test --knexfile ./src/database/knexfile.ts",
     "lint:check": "eslint --ext ts --report-unused-disable-directives .",
-    "test": "cross-env ENV_FILE=./src/config/env/.env.test jest --detectOpenHandles"
+    "test": "cross-env ENV_FILE=./src/config/env/.env.test jest --detectOpenHandles",
+    "infra": "docker-compose up -d",
+    "infra:stop": "docker-compose down"
   },
   "homepage": "https://github.com/janlibal/addressbook-backend-nodejs-api",
   "author": {
