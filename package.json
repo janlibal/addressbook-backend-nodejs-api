@@ -19,6 +19,7 @@
     "db-test:migrate": "knex migrate:latest --env test --knexfile ./src/database/knexfile.ts",
     "seed:make": "knex seed:make --knexfile ./src/database/knexfile.ts",
     "seed:db-dev": "knex seed:run --env development --knexfile ./src/database/knexfile.ts",
+    "rollback:db-dev": "knex migrate:rollback --env development --knexfile ./src/database/knexfile.ts",
     "lint:check": "eslint --ext ts --report-unused-disable-directives .",
     "test": "cross-env ENV_FILE=./src/config/env/.env.test jest --detectOpenHandles"
   },
