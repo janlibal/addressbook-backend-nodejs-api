@@ -18,6 +18,7 @@ Addressbok API is a simple RESTful API project built using Node.Js, Koa, Swagger
 ### Available Endpoints
 
 * GET / – gets API info
+* GET /swagger – API Documentation
 * POST /api/v1/user – creates new user and logs in  (returns access token to access protected routes)
 * POST /api/v1/login – login (returns access token to access protected routes)
 * POST /api/v1/address – saves new contact in Forestore database
